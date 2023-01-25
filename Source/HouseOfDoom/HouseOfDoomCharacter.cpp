@@ -78,6 +78,7 @@ void AHouseOfDoomCharacter::OnPrimaryAction()
 {
 	// Trigger the OnItemUsed Event
 	OnUseItem.Broadcast();
+	Attack();
 }
 
 void AHouseOfDoomCharacter::BeginTouch(const ETouchIndex::Type FingerIndex, const FVector Location)
