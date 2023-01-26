@@ -59,6 +59,17 @@ void UTP_WeaponComponent::Fire()
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
+
+	if(MuzzleEffect != nullptr)
+	{
+		APlayerController* PlayerController = Cast<APlayerController>(Character->GetController());
+		const FRotator SpawnRotation = PlayerController->PlayerCameraManager->GetCameraRotation();
+		// MuzzleOffset is in camera space, so transform it to world space before offsetting from the character location to find the final muzzle position
+		const FVector SpawnLocation = GetOwner()->GetActorLocation() + SpawnRotation.RotateVector(MuzzleOffset);
+		UNiagaraComponent* NiagaraComponent = UNiagaraFunctionLibrary::SpawnSystemAttached(MuzzleEffect, GetOwner()->GetRootComponent(), FName(TEXT("MuzzleFlash")), SpawnLocation, SpawnRotation, EAttachLocation::SnapToTarget, true, true, ENCPoolMethod::AutoRelease, true);
+		//NiagaraComponent->Mobility = EComponentMobility::Movable;
+		//NiagaraComponent->SetupAttachment(PlayerController->GetPawn()->GetRootComponent());
+	}
 }
 
 void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)

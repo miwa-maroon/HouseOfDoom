@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "UObject/ObjectMacros.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 #include "TP_WeaponComponent.generated.h"
 
 class AHouseOfDoomCharacter;
@@ -50,4 +53,9 @@ protected:
 private:
 	/** The Character holding this weapon*/
 	AHouseOfDoomCharacter* Character;
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	UNiagaraSystem* MuzzleEffect;
+
 };
