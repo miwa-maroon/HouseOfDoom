@@ -5,11 +5,11 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "UObject/ObjectMacros.h"
-#include "NiagaraFunctionLibrary.h"
-#include "NiagaraComponent.h"
 #include "TP_WeaponComponent.generated.h"
 
 class AHouseOfDoomCharacter;
+class UTP_WeaponComponent;
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFire);
 
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class HOUSEOFDOOM_API UTP_WeaponComponent : public UActorComponent
@@ -55,7 +55,6 @@ private:
 	AHouseOfDoomCharacter* Character;
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	UNiagaraSystem* MuzzleEffect;
-
+	UPROPERTY(BlueprintAssignable)
+	FOnFire OnFire;
 };
