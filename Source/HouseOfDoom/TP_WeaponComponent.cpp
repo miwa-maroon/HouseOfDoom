@@ -69,6 +69,7 @@ void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	{
 		// Unregister from the OnUseItem Event
 		Character->OnUseItem.RemoveDynamic(this, &UTP_WeaponComponent::Fire);
+		UE_LOG(LogTemp, Log, TEXT("Unregistering from OnUseItem Event"));
 	}
 }
 

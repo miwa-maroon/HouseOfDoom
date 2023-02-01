@@ -57,4 +57,5 @@ private:
 public:
 	UPROPERTY(BlueprintAssignable)
 	FOnFire OnFire;
+	
 };
