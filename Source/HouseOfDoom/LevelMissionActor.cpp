@@ -56,7 +56,7 @@ void ALevelMissionActor::MissionStart()
 			{
 				bIsAllNormalEnemySpawned = true;
 			}
-        
+			
             if(NumRangeEnemies > 0)
             {
             	
